@@ -1,0 +1,91 @@
+body.dark {
+    background-image: linear-gradient(to top, #505285 0%, #b5aee4 100%);
+
+    nav.navbar {
+        @extend .navbar-dark;
+        @extend .bg-dark;
+    }
+
+    .card {
+        @extend .bg-dark;
+        @extend .text-white;
+
+        .card-footer {
+            .btn-outline-dark {
+                @extend .btn-outline-primary;
+            }
+        }
+    }
+
+    .dropdown {
+        .dropdown-menu {
+            @extend .bg-dark;
+
+            .dropdown-item {
+                @extend .text-white;
+
+                &:hover,
+                &:focus {
+                    @extend .active;
+                }
+            }
+        }
+    }
+
+    .nav-wall {
+        @extend .bg-dark;
+
+        h1 {
+            @extend .text-white;
+        }
+    }
+
+    .list-group {
+        .list-group-item:not(.active) {
+            @extend .bg-dark;
+            @extend .text-white;
+        }
+    }
+
+    input.form-control,
+    textarea.form-control,
+    .multiselect__tags {
+        @extend .bg-dark;
+        @extend .text-white;
+    }
+
+    .pagination {
+        .page-link {
+            border: none;
+            @extend .bg-dark;
+            box-shadow: $box-shadow;
+        }
+    }
+
+    .btn-outline-secondary {
+        @extend .btn-outline-light;
+    }
+
+    table.table {
+        @extend .bg-dark;
+        @extend .text-white;
+    }
+
+    pre {
+        code {
+            @extend .text-white;
+        }
+    }
+
+    footer {
+        @extend .bg-dark;
+        @extend .text-white;
+    }
+
+    .modal {
+        .modal-content {
+            @extend .bg-dark;
+            @extend .text-white;
+        }
+    }
+}
