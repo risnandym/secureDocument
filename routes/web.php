@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CobaController;
 use App\Http\Controllers\FileUpload;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;

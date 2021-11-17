@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+<!-- @extends('layouts.admin') -->
 
 @section('main-content')
 
@@ -26,8 +26,8 @@
         </li>
       </ul>
     </nav>
-
-   
+    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(100)->generate($rd_string=Str::random(100))) !!} ">
+   {{ QrCode::generate($rd_string=Str::random(150)); }}
         
     <table class="table">
         <thead>
@@ -58,4 +58,5 @@
           </tr>
         </tbody>
     </table>
+    
 @endsection
