@@ -58,6 +58,7 @@ class FileUpload extends Controller
             $fileModel->save();
 
             // $digest = hash_file('sha3-512', $dir.$fileName, true);
+            // salted metode
             $digest = hash_hmac_file('sha3-512', $dir.$fileName, $rd_string, true);
             // return $digest;
             // $getteks = file_get_contents($dir.$fileName, true);

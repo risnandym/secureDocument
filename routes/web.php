@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CheckController;
 use App\Http\Controllers\CobaController;
 use App\Http\Controllers\FileUpload;
 use Illuminate\Support\Facades\Auth;
@@ -16,9 +17,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [CheckController::class, 'welcome']);
+Route::post('/', [CheckController::class, 'checkfile']);
 
 Auth::routes();
 

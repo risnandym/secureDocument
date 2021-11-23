@@ -14,15 +14,17 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "khanamiryan/qrcode-detector-decoder": "1.0.5.2",
         "laravel/framework": "^8.0",
         "laravel/legacy-factories": "^1.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
+        "libern/qr-code-reader": "^1.0",
         "setasign/fpdf": "^1.8",
         "setasign/fpdi": "^2.3",
         "setasign/fpdi-fpdf": "^2.3",
-        "setasign/fpdi_pdf-parser": "^2.0",
-        "simplesoftwareio/simple-qrcode": "~4"
+        "simplesoftwareio/simple-qrcode": "~4",
+        "spatie/pdf-to-image": "^2.1"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
