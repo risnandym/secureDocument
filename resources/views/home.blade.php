@@ -26,8 +26,8 @@
         </li>
       </ul>
     </nav>
-    <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(100)->generate($rd_string=Str::random(100))) !!} ">
-   {{ QrCode::generate($rd_string=Str::random(150)); }}
+    <!-- <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(100)->generate($rd_string=Str::random(100))) !!} ">
+   {{ QrCode::generate($rd_string=Str::random(150)); }} -->
         
     <table class="table">
         <thead>
@@ -39,23 +39,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td colspan="2">Larry the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          @foreach($files as $f)
+            <tr>
+             <td>{{$f->name}}</td>
+             <td>{{$f->file_path}}</td>
+             <td><a href="{{Storage::url($f->name)}}">Klik</a>
+               </td>
+               <td><form action="/file-delete" method="post">
+               <!-- {!! method_field('delete') !!} -->
+               <button type="submit">Delete</button></td>
+               </form>
+            </tr>
+          @endforeach  
         </tbody>
     </table>
     

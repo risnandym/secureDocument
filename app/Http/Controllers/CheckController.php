@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Spatie\PdfToImage\Pdf;
+use App\Models\digest;
 use Zxing\QrReader;
 use Illuminate\Support\Facades\Storage;
 use Imagick;
@@ -16,22 +17,37 @@ class CheckController extends Controller
     }
 
     public function checkfile(Request $check){
+        // validate file type
         $check->validate([
             'file' => 'required|mimes:pdf'
         ]);
+
+        // set location source
         $filePath = $check->file('file')->storeAs('basic', 'check.pdf');
         $outpath = "..\storage\app\basic\check.png";
-        
-        
+         $dir = "../storage/app/";
+
+        // pdf into image 
         $pdf = new Pdf(Storage::path($filePath));
+        $pagecount = $pdf->getNumberOfPages();
+
+        $pdf->setPage($pagecount);
         $pdf->setOutputFormat('png');
         $pdf->saveImage($outpath);
-        // include_once('lib/QrReader.php');
-        $dir = "../storage/app/";
+        
+        // decoder QRC 
         $QRCodeReader = new QrReader(Storage::path('basic\check.png'));
         $qrcode_text = $QRCodeReader->text();
-        $cdigest = hash_hmac_file('sha3-512', $dir.$filePath, $qrcode_text, false);
-        echo $cdigest;
 
+        // rehash for verify
+        $cdigest = hash_hmac_file('sha3-512', $dir.$filePath, $qrcode_text, false);
+        // echo $cdigest;
+        $dig = digest::where('message',$cdigest)->first();
+        if($dig){
+            echo 'dokumen terbukti asli';
+        }
+        else{
+            echo 'dokumen palsu';
+        }
     }
 }

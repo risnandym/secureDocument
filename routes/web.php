@@ -26,6 +26,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::put('/profile', 'ProfileController@update')->name('profile.update');
+Route::post('file-delete', [FileUpload::class, 'deleteFile'])->name('file.delete');
 
 Route::get('/about', function () {
     return view('about');
