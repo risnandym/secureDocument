@@ -8,6 +8,7 @@ use App\Models\File;
 use Illuminate\Support\Str;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use setasign\Fpdi\Fpdi;
+use Zxing\QrReader;
 use Illuminate\Support\Facades\Storage;
 
 // require_once('../vendor/setasign/fpdf/fpdf.php');
@@ -30,8 +31,9 @@ class FileUpload extends Controller
         $fileModel = new File;
 
         // Salt encoded to QRC
+        $label = "File Hashed \n ";
         $rd_string = Str::random(150);
-        $item = QrCode::format('png')->generate($rd_string);
+        $item = QrCode::format('png')->generate($label.$rd_string);
         Storage::put('basic/QRC.png', $item);
         
         // upload new file
@@ -61,13 +63,16 @@ class FileUpload extends Controller
             $fileModel->file_path = '/storage/' . $pdf->Output($dir.$fileName, 'F');
             $fileModel->save();
 
+            $QRCodeReader = new QrReader(Storage::path('basic\check.png'));
+            $qrcode_text = $QRCodeReader->text();
             // $message = new digest;
             // hmac = origin content + additional key (salted key)
             $mess = new digest;
-            $digy = hash_hmac_file('sha3-512', $dir.$fileName, $rd_string, false);
+            $digy = hash_hmac_file('sha3-512', $dir.$fileName, $qrcode_text, false);
             
             $mess->message = $digy;
             $mess->save();
+            // echo "file <br>".$rd_string;
             // echo $digy;
             return redirect('home');
         }

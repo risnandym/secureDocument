@@ -38,13 +38,13 @@ class CheckController extends Controller
         // decoder QRC 
         $QRCodeReader = new QrReader(Storage::path('basic\check.png'));
         $qrcode_text = $QRCodeReader->text();
-
+        echo $qrcode_text;
         // rehash for verify
         $cdigest = hash_hmac_file('sha3-512', $dir.$filePath, $qrcode_text, false);
         // echo $cdigest;
         $dig = digest::where('message',$cdigest)->first();
         if($dig){
-            echo 'dokumen terbukti asli';
+            return redirect('result');
         }
         else{
             echo 'dokumen palsu';

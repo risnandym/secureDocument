@@ -33,16 +33,17 @@
         <thead>
           <tr>
             <th scope="col">#</th>
-            <th scope="col">Pengaju</th>
-            <th scope="col">Keperluan</th>
+            <th scope="col">Dokumen</th>
+            <th scope="col">Harusnya ini kategori dokumen</th>
             <th scope="col">Handle</th>
           </tr>
         </thead>
         <tbody>
           @foreach($files as $f)
             <tr>
-             <td>{{$f->name}}</td>
-             <td>{{$f->file_path}}</td>
+            <td>{{$f->file_path}}</td> 
+            <td>{{$f->name}}</td>
+
              <td><a href="{{Storage::url($f->name)}}">Klik</a>
                </td>
                <td><form action="/file-delete" method="post">
