@@ -1,0 +1,46 @@
+@font-face {
+    font-family: 'IBM Plex Sans';
+    src: url('/fonts/IBMPlexSans-Bold.woff2') format('woff2'),
+         url('/fonts/IBMPlexSans-Bold.woff') format('woff'),
+         url('/fonts/IBMPlexSans-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IBM Plex Sans';
+    src: url('/fonts/IBMPlexSans.woff2') format('woff2'),
+         url('/fonts/IBMPlexSans.woff') format('woff'),
+         url('/fonts/IBMPlexSans.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+$blue: #3490dc;
+$indigo: #6574cd;
+$purple: #9561e2;
+$pink: #f66d9b;
+$red: #e3342f;
+$orange: #f6993f;
+$yellow: #ffed4a;
+$green: #38c172;
+$teal: #4dc0b5;
+$cyan: #6cb2eb;
+$body-bg: #f8fafc;
+$font-family-sans-serif: 'IBM Plex Sans', Helvetica, Arial, Sans-Serif;
+$font-size-base: 1rem;
+$line-height-base: 1.6;
+$link-color: $blue;
+$link-hover-color: $indigo;
+$border-radius: 1rem;
+$box-shadow-sm: 0 10px 20px rgba(0, 0, 0, .1);
+$box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
+$dropdown-border-width: 1px;
+$dropdown-border-color: transparent;
+$dropdown-item-padding-y: .5rem;
+$card-spacer-x: 1.5rem;
+$card-spacer-y: 1rem;
+$card-border-width: 1px;
+$card-border-color: transparent;
+$modal-content-border-radius: 1rem;
+$fa-font-path: "../webfonts";
